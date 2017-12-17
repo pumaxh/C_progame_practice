@@ -5,7 +5,10 @@ int main()
 {
     double one, two, three, sum, avg;
 	get_3_num(&one, &two, &three);
-    sum_n_avg(one, two, three,  &sum, &avg);
-    printf("Test result: sum = %f, avg = %f\n", sum, avg);
+	order(&one, &two);
+	order(&one, &three);
+	order(&two, &three);
+    printf("Test result: the numbers in ascending order are: %.2f %.2f %.2f\n",
+		   one, two, three);
     return 0;
 }
