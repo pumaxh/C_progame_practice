@@ -56,44 +56,20 @@ unsigned int get_nth_prime(unsigned int n) /* get n'th prime number */
 
 int main(void)
 {
-#if 0        
-    double x[MAX_ITEM],
-           mean,
-           st_dev,      /* standard deviation of the data */
-           sum,
-           sum_sqr;     /* sum of the squares of the data */
+    unsigned int x[MAX_ITEM];
     int    i;
 
-    /* Gets the data */
-    printf("Enter %d numbers separated by blanks or <return>\n", MAX_ITEM);
+    /* Get nth prime then insert to array */
     for (i = 0; i < MAX_ITEM; i++)
     {
-        scanf("%lf", &x[i]);
+        x[i] = get_nth_prime(i);
     }
 
-    /* Computes the sum and the sum of the squares of all data */
-    sum = 0;
-    sum_sqr = 0;
+    /* Display array index and content of the array */
+    printf("Index     Item\n");
     for (i = 0; i < MAX_ITEM; i++)
     {
-        sum    += x[i];
-        sum_sqr = x[i] * x[i];
+        printf("%3d%4c%6u\n", i, ' ', x[i]);
     }
-
-    /* Computes and prints the mean and standard deviation */
-    mean = sum / MAX_ITEM;
-    st_dev = sqrt(sum_sqr / MAX_ITEM - mean * mean);
-    printf("The mean is %.2f.\n", mean);
-    printf("The standard deviation is %.2f.\n", st_dev);
-    printf("Index     Item     Difference\n");
-    for (i = 0; i < MAX_ITEM; i++)
-    {
-        printf("%3d%4c%8.2f%5c%8.2f\n", i, ' ', x[i], ' ', x[i] - mean);
-    }
-#endif
-    unsigned int m;
-    m = get_nth_prime(5);
-    printf("The 5'th prime is:%u\n", m);
-
     return 0;
 }
