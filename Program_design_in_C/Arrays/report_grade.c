@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 #define FALSE           0
 #define TRUE            1
@@ -57,9 +58,11 @@ int f_get_answers()
     FILE *fp;
     char *path = "examdat.txt";
     char line_buf[101];
-    int  num, i;
+    int  num, i, problem_num, ans_len, score;
     char ans_buf[100];
+    char *tem_buf;
     BOOL first_line = TRUE;
+    int  *missed_list;
     
     fp = fopen(path, "r");
     if (NULL == fp)
@@ -70,32 +73,76 @@ int f_get_answers()
 
     while (SUCCESS == get_line_from_file(fp, line_buf))
     {
-        if (0 != get_num_ans(line_buf, &num, ans_buf))
-        {
-            printf("Prase line fail.\n");
-            return PARSE_FAIL;
-        }
+        
 
         if (first_line)
         {
+            if (0 != get_num_ans(line_buf, &problem_num, ans_buf))
+            {
+                printf("Prase line fail.\n");
+                return PARSE_FAIL;
+            }
             printf("          Exam Report\n");
             printf("Question   ");
-            for (i = 0; i < num; ++i)
+            for (i = 0; i < problem_num; ++i)
             {
                 printf("%d ", i);
             }
             printf("\nAnswer     ");
-            for (i = 0; i < num; ++i)
+            for (i = 0; i < problem_num; ++i)
             {
-                if(i != num - 1)
+                if(i != problem_num - 1)
                     printf("%c ", ans_buf[i]);
                 else
                     printf("%c\n", ans_buf[i]);
             }
             first_line = FALSE;
+            printf("\nID      Score(%%)\n");
+
+            missed_list = (int *)malloc(num * sizeof(int));
+        }
+        else
+        {
+            tem_buf = ans_buf + problem_num;
+            if (0 != get_num_ans(line_buf, &num, tem_buf))
+            {
+                printf("Prase line fail.\n");
+                return PARSE_FAIL;
+            }
+
+            score = 0;
+            for (i = 0; i < problem_num; i++)
+            {
+                if((tem_buf + i) == NULL)
+                {
+                    return PARSE_FAIL;
+
+                }
+
+                if(ans_buf[i] == tem_buf[i])
+                {
+                    ++score;
+                }
+                else
+                {
+                    ++(*(missed_list + i));
+                }
+            }
+            printf("%d%8d\n", num, score*100/problem_num);
         }
     }
-
+    printf("\nQuestion ");
+    for(i = 0; i < problem_num; ++i)
+    {
+        printf(" %d", i);
+    }
+    printf("\nMissed by");
+    for(i = 0; i < problem_num; ++i)
+    {
+        printf(" %d", missed_list[i]);
+    }
+    printf("\n");
+    free(missed_list);
     return 0;
 }
 
@@ -103,7 +150,7 @@ int get_line_from_file(FILE *fp, char line_buf[])
 {
     if (NULL == fp)
     {
-        line_buf[0] = 0;
+        line_buf = NULL;
         return FILE_NOT_EXIST;
     }
     if(NULL != fgets(line_buf, 101, fp))
@@ -111,7 +158,7 @@ int get_line_from_file(FILE *fp, char line_buf[])
          return SUCCESS;
     }
     
-    line_buf[0] = 0;
+    line_buf = NULL;
     return GET_LINE_FAIL;
 }
 
