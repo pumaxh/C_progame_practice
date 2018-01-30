@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include "report_grade.h"
 
+#define BUFF_LEN 101
+
 int fill_num(char *token,int token_len, int *num)
 {
     int i, total = 0;
@@ -43,7 +45,7 @@ int f_get_answers()
 {
     FILE *fp;
     char *path = "examdat.txt";
-    char line_buf[101];
+    char line_buf[BUFF_LEN];
     int  num, i, problem_num, ans_len, score;
     char ans_buf[100];
     char *tem_buf;
@@ -57,7 +59,7 @@ int f_get_answers()
         return FILE_NOT_EXIST;
     }
 
-    while (SUCCESS == get_line_from_file(fp, line_buf, buf_len))
+    while (SUCCESS == get_line_from_file(fp, line_buf, BUFF_LEN))
     {
         
 
@@ -130,22 +132,6 @@ int f_get_answers()
     printf("\n");
     free(missed_list);
     return 0;
-}
-
-int get_line_from_file(FILE *fp, char line_buf[], int buf_size)
-{
-    if (NULL == fp)
-    {
-        line_buf = NULL;
-        return FILE_NOT_EXIST;
-    }
-    if(NULL != fgets(line_buf, buf_size, fp))
-    {
-         return SUCCESS;
-    }
-    
-    line_buf = NULL;
-    return GET_LINE_FAIL;
 }
 
 int main(void)
