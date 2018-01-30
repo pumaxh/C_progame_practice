@@ -54,3 +54,4 @@ dkms.conf
 # Local file not upload
 *.tmp
 tags
+cscope*

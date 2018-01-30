@@ -57,7 +57,7 @@ int f_get_answers()
         return FILE_NOT_EXIST;
     }
 
-    while (SUCCESS == get_line_from_file(fp, line_buf))
+    while (SUCCESS == get_line_from_file(fp, line_buf, buf_len))
     {
         
 
@@ -132,14 +132,14 @@ int f_get_answers()
     return 0;
 }
 
-int get_line_from_file(FILE *fp, char line_buf[])
+int get_line_from_file(FILE *fp, char line_buf[], int buf_size)
 {
     if (NULL == fp)
     {
         line_buf = NULL;
         return FILE_NOT_EXIST;
     }
-    if(NULL != fgets(line_buf, 101, fp))
+    if(NULL != fgets(line_buf, buf_size, fp))
     {
          return SUCCESS;
     }
