@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/sample_test.dir/test_main.cpp.o CMakeFiles/sample_test.dir/sample1.cc.o CMakeFiles/sample_test.dir/sample1_unittest.cc.o  -o sample_test -Wl,-Bstatic -lgtest -Wl,-Bdynamic -lpthread 
