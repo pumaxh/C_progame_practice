@@ -119,6 +119,8 @@ int f_get_answers()
             printf("%d%8d\n", num, score*100/problem_num);
         }
     }
+    fclose(fp);
+
     printf("\nQuestion ");
     for(i = 0; i < problem_num; ++i)
     {
