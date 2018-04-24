@@ -41,9 +41,9 @@ int main(void)
 }
 
 /*
-  * Complex number input function returns standard scanning error code
-  * 1 => valid scan, 0 => error, negative EOF value => end of file
-  */
+ * Complex number input function returns standard scanning error code
+ * 1 => valid scan, 0 => error, negative EOF value => end of file
+ */
 int scan_complex(complex_t *c)
 {
     int status;
@@ -61,9 +61,9 @@ int scan_complex(complex_t *c)
 }
 
 /*
-  * Complex output function displays value as (a + bi) or (a - bi),
-  * dropping a or b if they round to 0 unless both round to 0
-  */
+ * Complex output function displays value as (a + bi) or (a - bi),
+ * dropping a or b if they round to 0 unless both round to 0
+ */
 void print_complex(complex_t c)
 {
     double a, b;
@@ -103,8 +103,8 @@ void print_complex(complex_t c)
 }
 
 /*
-  * Returns sum of complex values c1 and c2
-  */
+ * Returns sum of complex values c1 and c2
+ */
 complex_t add_complex(complex_t c1, complex_t c2)
 {
     complex_t csum;
@@ -116,8 +116,8 @@ complex_t add_complex(complex_t c1, complex_t c2)
 }
 
 /*
-  * Returns difference c1 - c2
-  */
+ * Returns difference c1 - c2
+ */
 complex_t subtract_complex(complex_t c1, complex_t c2)
 {
     complex_t cdiff;
@@ -128,8 +128,8 @@ complex_t subtract_complex(complex_t c1, complex_t c2)
 }
 
 /* 
-  * Returns product of complex values c1 and c2
-  */
+ * Returns product of complex values c1 and c2
+ */
 complex_t multiply_complex(complex_t c1, complex_t c2)
 {
     complex_t cmult;
@@ -140,8 +140,8 @@ complex_t multiply_complex(complex_t c1, complex_t c2)
 }
 
 /*
-  * Returns quotient of complex values (c1 / c2)
-  */
+ * Returns quotient of complex values (c1 / c2)
+ */
 complex_t divide_complex(complex_t c1, complex_t c2)
 {
     complex_t cdivid;
@@ -152,8 +152,8 @@ complex_t divide_complex(complex_t c1, complex_t c2)
 }
 
 /*
-  * Returns absolute value of complex number c
-  */
+ * Returns absolute value of complex number c
+ */
 complex_t abs_complex(complex_t c)
 {
     complex_t cabs;
