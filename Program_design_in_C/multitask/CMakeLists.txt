@@ -1,0 +1,11 @@
+PROJECT(multitask_exercise)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
+
+SET(DIR_ROOT .)
+AUX_SOURCE_DIRECTORY(${DIR_ROOT}/src DIR_SRCS)
+
+INCLUDE_DIRECTORIES(${DIR_ROOT}/include)
+
+ADD_EXECUTABLE(multitask_exercise ${DIR_SRCS})
+
+TARGET_LINK_LIBRARIES(multitask_exercise pthread)

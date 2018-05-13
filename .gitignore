@@ -56,3 +56,5 @@ test*
 *.tmp
 tags
 cscope*
+build/
+.vscode/
