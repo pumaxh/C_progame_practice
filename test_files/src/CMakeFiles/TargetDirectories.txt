@@ -1,5 +1,0 @@
-/home/pumaxh/C_program/C_progame_practice/test_files/src/CMakeFiles/edit_cache.dir
-/home/pumaxh/C_program/C_progame_practice/test_files/src/CMakeFiles/rebuild_cache.dir
-/home/pumaxh/C_program/C_progame_practice/test_files/src/bin/CMakeFiles/rebuild_cache.dir
-/home/pumaxh/C_program/C_progame_practice/test_files/src/bin/CMakeFiles/edit_cache.dir
-/home/pumaxh/C_program/C_progame_practice/test_files/src/bin/CMakeFiles/sample_test.dir
